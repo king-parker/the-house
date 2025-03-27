@@ -37,7 +37,10 @@ Suddenly, Bobby Jones turns white and rushes away from the wall toward the back 
 :: Bobby to kitchen {"position":"1100,500","size":"100,100"}
 You watch as Bobby Jones makes it to the threshold of the kitchen on the other side of the living room. He turns around, waves his hand to encourage you to go to him and whispers across the room, "Come on, you just need to come where I'm at."
 
-[[Shake your head no->Bobby reassures]]
+(link: "Shake your head no")[
+	(set: $courage to $courage - 1)
+	(go-to: "Bobby reassures")
+]<!--[[Bobby reassures]]-->
 
 [[Brace your self and go to Bobby Jones->Door to Kitchen Entrance]]
 
@@ -56,6 +59,11 @@ Then the sounds of struggle pull you back. Scratching, heavy breathing, shufflin
 Suddenly Bobby Jones looks to your left and his eyes go wide. "Watch out!" he begins shouting. Before you have the time to process what is happening, you feel a sharp pain enter your back and travel forward, out through your chest. Your vision goes black.
 
 You are dead.
+
+(link: "Try again")[
+	($resetGame)
+    (go-to: "Initial Passage")
+]<!--[[Initial Passage]]-->
 
 
 :: Door to Kitchen Entrance {"position":"900,500","size":"100,100"}
@@ -76,7 +84,6 @@ Bobby Jones is the first to let out a sigh of relief. You don’t dare breathe f
 
 
 :: Enter House {"position":"900,350","size":"100,100"}
-(set: $followedIntoHouse to true)
 From the moment Bobby Jones squeaks the decayed, splintered door open, you are glued to his side, taking a step whenever he takes a step. You don’t make out much of what the inside looks like; you are too scared to process things rationally. But you do notice everything is just gray, like there is no life to be found. Entering the house, the only things you can see are a hall at the back end of the living room on the left, presumably with bedrooms and a den attached to it, and the kitchen almost directly across from where you entered the house.
 
 [[Finish crossing the living room->Door to Kitchen Entrance]]
@@ -106,6 +113,11 @@ As you run across the living room, you can hear the creature scrambling after yo
 When you catch up to Bobby Jones in the middle of the cul-de-sac, you both turn back towards the house. It looks the same as it was before you stepped inside. The front door is even closed. Nothing moves within. The pale skin of the creature is nowhere to be found.
 
 You turn around and start walking home. As you go, Bobby Jones tells you, “You are the bravest kid I know.”
+
+(link: "Play again")[
+	($resetGame)
+    (go-to: "Initial Passage")
+]<!--[[Initial Passage]]-->
 
 
 :: Friend fight {"position":"1400,700","size":"100,100"}
@@ -137,9 +149,16 @@ Bobby Jones looks down toward you. He looks unsure as he peers into the darkness
 :: Initial Passage {"position":"900,200","size":"100,100"}
 Bobby Jones is the bravest kid you know. You never would have entered the old, abandoned house without him. You are still not quite sure how he did it, but he convinced you to walk inside something even the adults are too scared to enter. All he wants, though, is for you to go with him from the front door to the back of the living room. You can see the back of the spacious living room from the front windows.
 
-[[Follow Bobby Jones into the house->Enter House]]
+(link: "Follow Bobby Jones into the house")[
+	(set: $followedIntoHouse to true)
+    (set: $courage to $courage + 1)
+    (go-to: "Enter House")
+]<!--[[Follow Bobby Jones into the house->Enter House]]-->
 
-[[Stand only in the doorway->Watch Bobby enter house]]
+(link: "Stand only in the doorway")[
+	(set: $followedIntoHouse to false)
+    (go-to: "Watch Bobby enter house")
+]<!--[[Stand only in the doorway->Watch Bobby enter house]]-->
 
 
 :: Initial Speaking {"position":"900,650","size":"100,100"}
@@ -164,11 +183,23 @@ You are already terrified, but the sight of that claw sends your heart pounding 
 [[Observe Bobby Jones->Bobby sees creature]]
 
 
+:: Startup [startup] {"position":"700,200","size":"100,100"}
+(set: $resetGame to (macro:[
+	(set: $followedIntoHouse to false)
+	(set: $courage to 0)
+    (output:)[]
+]))
+
+($resetGame:)
+
+
 :: Watch Bobby enter house {"position":"1100,350","size":"100,100"}
-(set: $followedIntoHouse to false)
 Bobby Jones squeaks the decayed, splintered door open. You don't dare go any further than the doorway of the house. Your eyes fixated on Bobby Jones as he creeps across the gray living room. He doesn't realize you weren't following him until he's about halfway across the room when he finally looks back. His head shakes in playful disapproval as he turns his head back to his goal, the kitchen entrance on the other side of the living room.
 
-[[Continue watching->Bobby to kitchen]]
+(link: "Continue watching")[
+	(set: $courage to $courage - 1)
+	(go-to: "Bobby to kitchen")
+]<!--[[Bobby to kitchen]]-->
 
 [[Join Bobby->Door to Kitchen Entrance]]
 
