@@ -12,6 +12,21 @@ The House
 }
 
 
+:: Back to check friend {"position":"1450,875","size":"100,100"}
+Your lungs are still screaming but you run back towards the house to try to find out the fate of your friend. As you approach, you can see in the living room window, but nothing looks different from when you first entered the house. You circle around to the back side of the house to look for a back door. You find one, but a tree has fallen in front of it, blocking it from being opened.
+
+You peek into the kitchen window at the back of the house and you can't see anything besides the decaying wood of the kitchen cabinets and the peeling linoleum of the kitchen floor. You could see beyond into the living room, to the window at the front of the house. Nothing.
+
+You circle the house for about the next hour, not daring to go back inside. You crack open the back door a few times to call for Bobby Jones, but you never get a reply, not even the scratching of the creature.
+
+You never see your friend again.
+
+(link: "Play again")[
+	($resetGame)
+    (go-to: "Initial Passage")
+]<!--[[Initial Passage]]-->
+
+
 :: Bobby defends by back door {"position":"900,1550","size":"100,100"}
 Bobby Jones dodges an attack you can’t see. Just as soon as he disappears from your sight, the creature comes barreling into the back door. You finally see the creature for what it is. At first, you only see it from behind. It looks just like a frail man, hunched over, but it has no clothes, and its skin is pale white. At the ends of its arms are those clawed hands. Its feet wield those same claws.
 
@@ -20,7 +35,7 @@ As it turns around to face where Bobby Jones went, you see its face—or where i
 [[Watch in horror->Creature chases Bobby kitchen]]
 
 
-:: Bobby reassures {"position":"1200,650","size":"100,100"}
+:: Bobby reassures {"position":"1100,650","size":"100,100"}
 Bobby Jones is starting to look a little frustrated. He let's out an exasperated sigh and urgently whispers, "Come on! Do you think I enjoy standing here by myself?"
 
 [[Stubbornly shake your head no->Friend fight]]
@@ -32,6 +47,8 @@ Bobby Jones is starting to look a little frustrated. He let's out an exasperated
 Suddenly, Bobby Jones turns white and rushes away from the wall toward the back of the kitchen, looking all around. After a few seconds, he finds what he is looking for. At the back left end of the kitchen is a back door. He rushes over to it while beckoning you silently to follow.
 
 [[Follow Bobby Jones to the back door->Go to back door]]
+
+[[Try to escape out the front door->Early escape attempt]]
 
 
 :: Bobby to kitchen {"position":"1100,500","size":"100,100"}
@@ -50,12 +67,38 @@ The creature charges back the way it came, and you hear another crash. More comm
 
 Then the sounds of struggle pull you back. Scratching, heavy breathing, shuffling. You hear Bobby Jones call your name again—this time more desperate than before. You look back at the open door, at the escape right in front of you.
 
-[Run out the door]
+[[Run out the door->Flee back door]]
 
-[[Go to help Bobby Jones->Fight back kitchen]]
+(if: $courage > 0)[[[Go to help Bobby Jones->Fight back kitchen]]]
 
 
-:: Death no see monster {"position":"1700,700","size":"100,100"}
+:: Death in hole {"position":"1250,1250","size":"100,100"}
+You walk forward until you feel the wall of the hole you just fell down into. It's circular and not very wide. However, you can't reach the top of the hole. The walls are too steep to crawl up, and no matter how many running starts you do, you can't reach the top of the hole.
+
+All the while you are trying to get out, you hear the pained screams of Bobby Jones. Eventually they stop. You are left in the pitch black quiet for a few moments before you hear the scratching claws of the creature again. You can't do anything as the noise gets louder and closer. Soon you hear breathing above you. Saliva from the creature's mouth drops down on your face.
+
+You fall backwards and scramble back to be as far away from the creature as possible, which isn't far because of how small the hole is. A strong, clawed hand grabs you, lifting you up. You scream as the air around your head becomes moist.
+
+You are dead.
+
+(link: "Try again")[
+	($resetGame)
+    (go-to: "Initial Passage")
+]<!--[[Initial Passage]]-->
+
+
+:: Death living room floor {"position":"1300,1025","size":"100,100"}
+You hear a guttural roar as you move to put your arms underneath you to start standing back up. You barely get your chest a few inches off the ground before a clawed hand smashes you body back into the ground. You scream out in pain. Before you can get your head turned to look at the creature, the other claw comes down on the back of your head, pinning your face into the carpet. The last thing you hear before you black out is Bobby Jones calling out your name in despair.
+
+You are dead.
+
+(link: "Try again")[
+	($resetGame)
+    (go-to: "Initial Passage")
+]<!--[[Initial Passage]]-->
+
+
+:: Death no see monster {"position":"1600,650","size":"100,100"}
 Suddenly Bobby Jones looks to your left and his eyes go wide. "Watch out!" he begins shouting. Before you have the time to process what is happening, you feel a sharp pain enter your back and travel forward, out through your chest. Your vision goes black.
 
 You are dead.
@@ -83,6 +126,27 @@ Bobby Jones is the first to let out a sigh of relief. You don’t dare breathe f
 [["Yeah.."->Initial Speaking]]
 
 
+:: Early escape attempt {"position":"1100,950","size":"100,100"}
+You ignore Bobby Jones. You have already gone deep enough into the house and don't want to go any further. Surely the front door is a better choice. You bolt in that direction. {
+(if: $courage > 0)
+[
+You try to sneak a peak of the creature as you run past the hallway. Unfortunately, as you look over you don't see see the tangled mess of carpet in front of you and your foot catches on it. You trip, slamming face first into the dank, dusty carpet. You hear the creature's scratching noises again, but they pick up tempo. You know it's coming for you.
+]
+(else:)
+[
+You focus entirely on getting to the front door. Your attention soley on the door and the path up to it.
+]}
+
+{(if: $courage > 0)
+[
+[[Try to stand up->Death living room floor]]
+]
+(else:)
+[
+[[Burst through the front door->Front escape no friend]]
+]}
+
+
 :: Enter House {"position":"900,350","size":"100,100"}
 From the moment Bobby Jones squeaks the decayed, splintered door open, you are glued to his side, taking a step whenever he takes a step. You don’t make out much of what the inside looks like; you are too scared to process things rationally. But you do notice everything is just gray, like there is no life to be found. Entering the house, the only things you can see are a hall at the back end of the living room on the left, presumably with bedrooms and a den attached to it, and the kitchen almost directly across from where you entered the house.
 
@@ -97,12 +161,27 @@ It seems to only have a vague sense of where he is. As it reaches for him, Bobby
 [[Attack the creature->You charge the creature]]
 
 
-:: Finish friend fight {"position":"1550,700","size":"100,100"}
+:: Finish friend fight {"position":"1450,650","size":"100,100"}
 Your struggling is to no avail as your heels drag across the carpet. Large sections of thread getting pulled up as you go. Bobby Jones is dead set on getting you across the room. Nothing you say is able to convince him to let you go. Right as he pulls you to the entrance of the kitchen, he firmed plants you between him and the front door. You can clearly see the decaying cupboards in the kitchen behind him.
 
 "See!" He shouts, "That wasn't so bad!"
 
 [[Stop to catch your breath->Death no see monster]]
+
+
+:: Flee back door {"position":"1100,1700","size":"100,100"}
+You charge up the stairs and barrel out the open door. It takes a moment for your eyes to adjust to full sunlight again after just coming out of the dark basement. When your eyes finally adjust, you turn around. What you see amazes you. The back door you came running out of is no longer open, and is in fact the door was no longer busted at all. You creep up to the back window, scared the monster will jump out at you any second.
+
+Peeking inside, you see an empty kitchen. You can't see any sign of Bobby Jones or the creature. Running around to the front of the house to look into the living room window, you can't see any sign of them either. No sign of a struggle even. Everything looks the same as when you first entered the house.
+
+You circle the house for about the next hour, not daring to go back inside. You crack open the front and back door a few times to call for Bobby Jones, but you never get a reply, not even the scratching of the creature.
+
+You never see your friend again.
+
+(link: "Play again")[
+	($resetGame)
+    (go-to: "Initial Passage")
+]<!--[[Initial Passage]]-->
 
 
 :: Flee with Bobby Jones {"position":"900,2150","size":"100,100"}
@@ -120,7 +199,7 @@ You turn around and start walking home. As you go, Bobby Jones tells you, “You
 ]<!--[[Initial Passage]]-->
 
 
-:: Friend fight {"position":"1400,700","size":"100,100"}
+:: Friend fight {"position":"1300,650","size":"100,100"}
 You can tell Bobby Jones is getting mad. "Come on!" He says as he stomps across the living room. "There is no way I'm coming all the way in here by myself when you agreed to come with me."
 
 He swiftly crosses the room before you really have time to think. He grabs you by the arm, and he is definitely stronger than you so you can't break his grip.
@@ -128,6 +207,14 @@ He swiftly crosses the room before you really have time to think. He grabs you b
 "We agreed on getting you to the other side of the living room, so that's what were going to do!" Bobby Jones exclaims as he tugs you across the room.
 
 [[Fight to break free->Finish friend fight]]
+
+
+:: Front escape no friend {"position":"1300,875","size":"100,100"}
+You hear the creature scrambling after you. You have no idea how close it gets to you before you make out the front door. You don't just stop once you get out, you run nearly a block before you're convinced the creature isn't following you. You look back, and the house looks the same as when you first entered. Even the front door is closed.
+
+What's happened to Bobby Jones? Did he make it out? Maybe there was a back door?
+
+[[Go back to check for your friend->Back to check friend]]
 
 
 :: Go to back door {"position":"900,1100","size":"100,100"}
@@ -144,6 +231,24 @@ You try to check your surroundings in the basement, but there is no light except
 Bobby Jones looks down toward you. He looks unsure as he peers into the darkness. You wonder if it’s because he can’t see you and his only support in the situation has just disappeared, leaving him alone against this creature. He calls for you, but just as quickly as he lets his guard down to see where you went, he puts it back up again as you hear a screeching snarl.
 
 [[Watch Bobby Jones->Bobby defends by back door]]
+
+
+:: Hide in the kitchen {"position":"900,800","size":"100,100"}
+{(if: $hasHiddenKitchen)[Your first instinct is to hide. You slide around the wall of the kitchen to put something between you and the hallway. At first Bobby Jones stands looking down the hall, but then decides to join you in your hiding place.](else:)[(set: $hasHiddenKitchen to true)You don’t see anything down the hall yet, but you stand still, frozen in fear like a deer in headlights. Bobby Jones is levelheaded enough to take action. He grabs your arm and pulls you around the corner into the kitchen.]} You find yourselves in a nook where you think a fridge used to be, but it is big enough to give you space while you crane your necks around the wall so you can see down the hall.
+
+Still, you don’t see anything, but your ears continue to give you haunting messages. Added to the scratching noises are shuffling sounds, like someone dragging their feet across the ground while lethargically walking. For a moment, the sounds stop, only for the faint scratching noise to return with the sound of another door creak. With the door creak, you see the light shift in the hallway. The light shift is followed by a pale hand with ragged claws at the ends of its fingers emerging from where the wall obscures your vision.
+
+You are already terrified, but the sight of that claw sends your heart pounding a million beats per minute. You’re sure that not only can Bobby Jones hear it, but this creature can as well. You can bear no more, so you cower back around the corner in the kitchen. Bobby Jones stands motionless, bearing the sight of the creature as it emerges from its hiding place.
+
+[[Observe Bobby Jones->Bobby sees creature]]
+
+
+:: Hole in basement {"position":"1100,1250","size":"100,100"}
+You turn around and start moving deeper into the basement instinctively. You've taken a few steps before your panicking brain realizes you can't see anything. Right as you take your last step to stop and try to let your eyes adjust, you hear a big crash where Bobby Jones was. You whirl around to face the noise and take a quick jump backwards in surprise. Unfortunately, the ground isn't where you expect it to be. You've jumped backwards into a hole in the ground.
+
+You tumble down, backwards. The landing doesn't feel very good. If you hadn't be tumbline down the sides, you would've broken something. You stand up, wincing as you straighten your legs.
+
+[[Try to climb out->Death in hole]]
 
 
 :: Initial Passage {"position":"900,200","size":"100,100"}
@@ -164,30 +269,36 @@ Bobby Jones is the bravest kid you know. You never would have entered the old, a
 :: Initial Speaking {"position":"900,650","size":"100,100"}
 Then it is the house’s turn to speak. Almost as if responding to you, to prove Bobby Jones wrong, there comes a faint scratching noise from down the hall, like the nails of a dog standing up on a wooden floor. You both look down the hall with frozen stares, hoping you just imagined the noise and that by holding your breath, you can continue to hold the silence. Your heart drops when you hear the noise again, this time with the creaking of a door.
 
-[[Look down the hall->Pulled to the kitchen]]
+(link: "Look down the hall")[
+	(set: $hasHiddenKitchen to false)
+	(go-to: "Hide in the kitchen")
+]<!--[[Hide in the kitchen]]-->
+
+(link: "Hide real quick")[
+	(set: $hasHiddenKitchen to true)
+	(go-to: "Hide in the kitchen")
+]<!--[[Hide in the kitchen]]-->
 
 
 :: Kitchen stairs to basement {"position":"900,1250","size":"100,100"}
 Trapped, you run the only direction left—down a set of stairs next to the back door, into a dark basement. As you reach the bottom of the stairs, you turn around to see Bobby Jones standing with his fists at the ready. When you chose flight, it seems that Bobby Jones chose fight.
 
+{(if: $courage < 0)
+[
+[[Find a place to hide ->Hole in basement]]
+]
+(else:)
+[
 [[Find a place to hide->Hide in basement]]
-
-
-:: Pulled to the kitchen {"position":"900,800","size":"100,100"}
-You don’t see anything down the hall yet, but you stand still, frozen in fear like a deer in headlights. Bobby Jones is levelheaded enough to take action. He grabs your arm and pulls you around the corner into the kitchen. You find yourselves in a nook where you think a fridge used to be, but it is big enough to give you space while you crane your necks around the wall so you can see down the hall.
-
-Still, you don’t see anything, but your ears continue to give you haunting messages. Added to the scratching noises are shuffling sounds, like someone dragging their feet across the ground while lethargically walking. For a moment, the sounds stop, only for the faint scratching noise to return with the sound of another door creak. With the door creak, you see the light shift in the hallway. The light shift is followed by a pale hand with ragged claws at the ends of its fingers emerging from where the wall obscures your vision.
-
-You are already terrified, but the sight of that claw sends your heart pounding a million beats per minute. You’re sure that not only can Bobby Jones hear it, but this creature can as well. You can bear no more, so you cower back around the corner in the kitchen. Bobby Jones stands motionless, bearing the sight of the creature as it emerges from its hiding place.
-
-[[Observe Bobby Jones->Bobby sees creature]]
+]}
 
 
 :: Startup [startup] {"position":"700,200","size":"100,100"}
 (set: $resetGame to (macro:[
-	(set: $followedIntoHouse to false)
 	(set: $courage to 0)
-    (output:)[]
+	(set: $followedIntoHouse to false)
+	(set: $hasHiddenKitchen to false)
+	(output:)[]
 ]))
 
 ($resetGame:)
